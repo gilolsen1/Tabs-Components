@@ -1,23 +1,30 @@
 class TabLink {
   constructor(element) {
     // Assign this.element to the passed in DOM element
-    this.element;
+    this.element = element; //ie. from the loop!!!!!
     // Get the custom data attribute on the Link
-    // this.data;
-    // Using the custom data attribute get the associated Item element
-    // this.itemElement;
+    this.data = this.element.dataset.tab;
+    //IS THIS CORRECT TO GET THE DATA ATTR?  I know I want to get the 'tab' from 'data-tab' in the element
+
+    // Using the custom data attribute, get the associated Item element
+    //this.itemElement= document.querySelector(".tabs-item");
+    this.itemElement = document.querySelector(
+      `.tabs-item[data-tab="${this.data}"]`
+    );
     // Using the Item element, create a new instance of the TabItem class
-    // this.tabItem;
-    // Add a click event listener on this instance, calling the select method on click
+    this.tabItem = new TabItem(this.itemElement);
+    // Add a click event listener on this instance (of the constructor!!!!?!), calling the select method on click
+
+    this.element.addEventLisener("click", () => this.select()); // select is called on THIS instance of the constructor
   }
 
   select() {
     // Get all of the elements with the tabs-link class
-    // const links;
+    //const links;
     // Using a loop or the forEach method remove the 'tabs-link-selected' class from all of the links
-    // Array.from(links).forEach();
+    //Array.from(links).forEach();
     // Add a class named "tabs-link-selected" to this link
-    // this.element;
+    //this.element;
     // Call the select method on the item associated with this link
   }
 }
@@ -52,6 +59,8 @@ class TabItem {
 links = document
   .querySelectorAll(".tabs-link")
   .forEach(eachLinkTab => new TabLink(eachLinkTab));
+
+console.log(links);
 
 //    es5 function Version ????
 //    forEach(function(eachLinkTab) {
