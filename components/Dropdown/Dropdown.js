@@ -16,6 +16,7 @@ class Dropdown {
   toggleContent() {
     // Toggle the ".dropdown-hidden" class off and on
     this.content.classList.toggle("dropdown-hidden");
+    //didn't need the . in the class in quotes, and only wanted one
   }
 }
 
@@ -23,3 +24,5 @@ class Dropdown {
 let dropdowns = document
   .querySelectorAll(".dropdown")
   .forEach(dropdown => new Dropdown(dropdown));
+
+//if this is not hoisted, why is it at the bottom???
